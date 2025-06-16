@@ -13,9 +13,15 @@ import ingresoRoutes from './routes/ingreso.routes.js'
 const app = express()
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'http://localhost:5173', // Cambia esto a la URL de tu frontend
     credentials: true
 }))
+
+// Endpoint de prueba
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date() });
+});
+
 app.use(morgan('dev'))
 app.use(express.json());
 app.use(cookieParser())
